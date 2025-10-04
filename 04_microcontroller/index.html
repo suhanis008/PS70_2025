@@ -25,7 +25,62 @@
 
 <h3>Week 4: Microcontroller Programming</h3>
 
-<h4>[Do Something with an arduino]</h4>
+For my Arduino project, I decided to create another version of my Kinetic Sculpture. In this iteration, I used an L298N Motor Driver along with a potentiometer to control the speed of the motor. By turning the potentiometer, I could vary the voltage input to the Arduino, which adjusted the PWM signal sent to the motor driver and changed the motor’s speed. This is how the circuit looked like:
+
+<p class = "margin"></p>
+
+<img src="./Motor and Potentiometer Set up.PNG" alt="generic placeholder image" width = "400" height = "400">
+
+<p class = "margin"></p>
+
+This is a picture of the circuit diagram:
+
+<p class = "margin"></p>
+
+<img src="./Motor and Potentiometer Set up.PNG" alt="generic placeholder image" width = "400" height = "400">
+
+<p class = "margin"></p>
+
+This is the code snipped:
+
+
+<pre><code>
+const int A1A = 12;
+const int A2A = 14;
+const int potPin = 32;
+
+void setup() {
+  pinMode(A1A, OUTPUT);
+  pinMode(A2A, OUTPUT);
+  pinMode(potPin, INPUT);
+  ledcAttach(A1A, 5000, 8);
+  Serial.begin(115200);
+}
+
+void loop() {
+  int pot_value = analogRead(potPin);
+  int motor_speed = map(pot_value, 0, 4095, 255, 0);
+  Serial.println(motor_speed);
+  ledcWrite(A1A, motor_speed);
+  digitalWrite(A2A, LOW);
+  delay(1);
+}
+</code></pre>
+
+<p class = "margin"></p>
+
+
+Here is a video of my kinetic sculpure in motion!
+
+
+<p class = "margin"></p>
+
+<video width="640" height="360" autoplay muted>
+  <source src="Final Kinetic Sculpture.mp4" type="video/mp4">
+ 
+Your browser does not support the video tag.
+</video>
+
 
 
 
