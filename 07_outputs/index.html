@@ -166,14 +166,37 @@ Your browser does not support the video tag.
 </video>
 <p class = "margin"></p>
 
+I realized that attaching the servo mount directly to the hinge face was the root cause of the malfunction. The rotation was following a circular path rather than a fixed axis, and because the servo’s position relative to the mount was fixed, it failed to operate smoothly. To address this, I created another iteration where I detached the two components.
+
+<p class = "margin"></p>
+
+<video width="640" height="360" autoplay muted>
+  <source src="right_mvp.mp4" type="video/mp4">
+ 
+Your browser does not support the video tag.
+</video>
+<p class = "margin"></p>
+
+However, a new issue emerged, once the hinge folded, it wouldn’t fold back down, and the servo mount continued to detach. For proper motion, the mount needed to move along with the hinge face, but that meant redesigning the structure. I might need to adopt a configuration like this:
+
+<p class = "margin"></p>
+
+<img src="./other_hinge.jpg" alt="generic placeholder image" width = "400" height = "400">
+
+<p class = "margin"></p>
+
+
+
 <h4>Lessons Learned and Next Steps</h4>
 Through this MVP, I learned that even a seemingly simple folding mechanism involves lots of iterative refinement.Before my next design review, I plan to:
 Strengthen the hinge by increasing inner wall thickness.
 
 <ol>
   <li>Strengthen the hinge by increasing inner wall thickness.</li>
+  <li>Experiment with a hinge that allows a greater turning angle.</li>
   <li>Use a servo with higher torque.</li>
-  <li>Design a tighter servo horn connection.</li>
+  <li>Improve the servo horn connection, possibly using screws for a tighter fit.</li>
+  <li>Explore a more reliable method for attaching the paper to the hinge, since double-sided tape caused crumpling.</li>
   <li>Continue iterating to fine-tune tolerances and ensure servo and hinge alignment.</li>
 </ol>
 
