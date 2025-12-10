@@ -5,7 +5,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="../style.css" rel="stylesheet">
 
-
 <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #FEDCDB; color: #D8E57;">
   <div style="align-items: center; justify-content: center;" class="container-fluid">
     <div class="flexrow">
@@ -20,17 +19,198 @@
 
 <body>
 <xmp style="display:none;">
+
 <div class="textcontainer">
+
 <p class="margin"></p>
 
-<h3>Final Project: [INSERT FINAL PROJECT HERE]</h3>
+<h3>Final Project: Automated Origami Folding Machine</h3>
 
+<p class="margin"></p>
+
+<h4>Purpose of My Project</h4>
+My final project aims to automate the process of folding origami. The purpose is to explore how a machine can create a clean, consistent crease using mechanics and electronics, which turns out to be much more complex than it looks.
+<p class="margin"></p>
+
+<h4>From MVP Week to Final Project</h4>
+From MVP week, I realized I needed a stronger hinge, better torque, and a structure that wouldn’t shift. For the final project, I redesigned the hinge, used a stronger servo, added a holding mechanism, and rebuilt the system using plywood boxes instead of cardboard.
+<p class="margin"></p>
+
+<h4>Better Hinge Design</h4>
+I redesigned the hinge to increase wall thickness, improve tolerances, and prevent cracking.
+
+<p class="margin"></p>
+<img src="./final_hinge.jpg" alt="Final hinge design" width="400" height="400">
+<p class="margin"></p>
+
+<p class="margin"></p>
+
+<h4>Stronger Servo and Screw Attachment</h4>
+I upgraded to a stronger servo and switched to a screw-mounted arm for a more secure connection.
+
+<p class="margin"></p>
+<img src="./comparison.jpg" alt="Holding mechanism prototypes" width="400" height="400">
+<p class="margin"></p>
+
+<p class="margin"></p>
+<video width="640" height="360" autoplay muted>
+  <source src="paper_fold_basic.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<p class="margin"></p>
+
+<h4>Thread Linkage and Holding Mechanism</h4>
+One issue in the MVP was that I needed to tape the paper onto the hinge for every fold. This prevented the system from being semi-autonomous. So I designed a holding arm mechanism for a second servo, and shifted to a hinge with a larger gap so the mechansim could sit in between. I also attached a thread between the folding servo arm and hinge that could bring the hinge down after every fold.
+
+<p class="margin"></p>
+<img src="./holding_mechanisms.jpg" alt="Holding mechanism prototypes" width="400" height="400">
+<p class="margin"></p>
+
+<h4>Paper Choice and Support Box</h4>
+Thick paper did not fold well because the folding arm was open on one end.
+
+<p class="margin"></p>
+<video width="640" height="360" autoplay muted>
+  <source src="thick_paper_fail.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<p class="margin"></p>
+
+Normal printer paper performed much better.
+
+<p class="margin"></p>
+<video width="640" height="360" autoplay muted>
+  <source src="printer_paper_pass.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<p class="margin"></p>
+
+<h4>Electronics and Code</h4>
+I switched from an ESP32 to a Xiao board, which gave me good soldering practice. I controlled two servos: one for holding and one for folding.
+
+<p class="margin"></p>
+
+<pre><code>
+#include &lt;ESP32Servo.h&gt;
+
+Servo myservofold;  // create servo object to control a servo
+Servo myservohold; 
+int Fpos = 0; 
+int Hpos = 120;   // variable to store the servo position.
+int ButtonPinFold = D7;
+int ServoPinFold = D8;
+int ServoPinHold = D9;
+
+void setup() {
+  myservofold.attach(ServoPinFold);
+  myservofold.write(Fpos);
+  myservohold.attach(ServoPinHold);
+  myservohold.write(Hpos);
+  pinMode(ButtonPinFold, INPUT_PULLUP);
+  Serial.begin(9600); 
+}
+
+void loop() {
+  int ButtonStateFold = digitalRead(ButtonPinFold);
+  Serial.println(ButtonStateFold);
+
+  if (ButtonStateFold == LOW) {   
+    
+    myservohold.write(175);
+    delay(1000);
+
+    myservofold.write(118);
+    delay(1000);
+
+    myservohold.write(175);
+    delay(1000); 
+
+    myservofold.write(118);
+    delay(1000);
+
+    myservofold.write(0);
+    delay(1000);
+    
+    myservohold.write(120);
+    delay(1000);
+   
+  }
+}
+</code></pre>
+
+<p class="margin"></p>
+
+<h4>Moving from Cardboard to Plywood</h4>
+Cardboard wasn’t strong enough, and since the motors were just secured with double sided tape they kepy moving a lot. I decided to shift to finger-joint plywood boxes. I prototyped measurements using cardboard and then laser-cut 6mm plywood using MakerCase. The 0.18mm kerf made the finger joints tight enough to hammer-fit without glue.
+
+<p class="margin"></p>
+<img src="./cardboard_prototype.jpg" alt="Cardboard prototype" width="400" height="400">
+<p class="margin"></p>
+
+<p class="margin"></p>
+<img src="./mallet_box_fit.jpg" alt="Mallet press-fit plywood box" width="400" height="400">
+<p class="margin"></p>
+
+<h4>Motor Mounts and L-Joints</h4>
+I took measurements of the motor and designed a L-joint to hold it down. I drilled on the plywood to fit screws through it to mount the motors securely. Experimenting with different measurements took some time.
+<p class="margin"></p>
+<img src="./Screws.jpg" alt="Sanding plywood edges" width="400" height="400">
+<p class="margin"></p>
+
+<p class="margin"></p>
+<img src="./L-joint.jpg" alt="Sanding plywood edges" width="400" height="400">
+<p class="margin"></p>
+
+After sanding the plywood, I attached the boxes together and taped the hinge onto the surface.
+
+<p class="margin"></p>
+<img src="./sanding_edges.jpg" alt="Sanding plywood edges" width="400" height="400">
+<p class="margin"></p>
+
+<p class="margin"></p>
+<img src="./assembled_boxes.jpg" alt="Assembled plywood boxes" width="400" height="400">
+<p class="margin"></p>
+
+<h4>Switch Mount and Base</h4>
+I soldered a switch and 3D printed a small mount so it could be pressed from the front. Then I attached the whole mechanism onto a plywood base for stability.
+<p class="margin"></p>
+
+<h4>Final Project Demo</h4>
+
+<p class="margin"></p>
+<video width="640" height="360" autoplay muted>
+  <source src="final_fold_demo.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<p class="margin"></p>
+
+Here is my full presentation video:
+<br>
+<a href="INSERT_LINK_HERE">Link to watch it</a>
+
+<p class="margin"></p>
+
+<h4>Further Work</h4>
+<ul>
+  <li>Reduce the hinge gap for sharper folds</li>
+  <li>Thin the holding mechanism while keeping it stable</li>
+  <li>Add a tiny motorized roller to advance the paper</li>
+  <li>Explore multiple sequential folds</li>
+</ul>
+
+<p class="margin"></p>
+
+<h4>End Thoughts on the Term</h4>
+I am very proud of how this project turned out. I spent several hours in the makerpsace through out the term working on it and I feel very happy! I am so glad I took this class. This was my first time building a complete mechanical–electronic system from scratch. I learned how long even simple tasks can take, and I’m extremely grateful to Nathan, Bobby, Kassia, Jessica, Alyssa, and the TF team for all their support. I will miss this class, but I’m glad I can always return to the makerspace.
+
+<p class="margin"></p>
 
 </div>
+
 </xmp>
 </body>
 
 <script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
