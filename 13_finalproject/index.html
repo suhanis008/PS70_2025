@@ -60,11 +60,20 @@ Your browser does not support the video tag.
 <p class="margin"></p>
 
 <h4>Thread Linkage and Holding Mechanism</h4>
-One issue in the MVP was that I needed to tape the paper onto the hinge for every fold. This prevented the system from being semi-autonomous. So I designed a holding arm mechanism for a second servo, and shifted to a hinge with a larger gap so the mechansim could sit in between. I also attached a thread between the folding servo arm and hinge that could bring the hinge down after every fold.
+One issue in the MVP was that I needed to tape the paper onto the hinge for every fold. This prevented the system from being semi-autonomous. So I designed a holding arm mechanism for a second servo, and shifted to a hinge with a larger gap so the mechansim could sit in between. 
 
 <p class="margin"></p>
-<img src="./holding_mechanisms.jpg" alt="Holding mechanism prototypes" width="400" height="400">
+<img src="./holding_mechanism_screw.jpg" alt="Holding mechanism prototypes" width="400" height="400">
 <p class="margin"></p>
+
+
+<p class="margin"></p>
+<img src="./between_hinge.jpg" alt="Holding mechanism prototypes" width="400" height="400">
+<p class="margin"></p>
+
+
+I also attached a thread between the folding servo arm and hinge that could bring the hinge down after every fold.
+
 
 <h4>Paper Choice and Support Box</h4>
 Thick paper did not fold well because the folding arm was open on one end.
@@ -76,8 +85,7 @@ Your browser does not support the video tag.
 </video>
 <p class="margin"></p>
 
-Normal printer paper performed much better.
-
+Normal printer paper performed much better. 
 <p class="margin"></p>
 <video width="640" height="360" autoplay muted>
   <source src="printer_paper_pass.mp4" type="video/mp4">
@@ -85,8 +93,13 @@ Your browser does not support the video tag.
 </video>
 <p class="margin"></p>
 
+However, I had to hold the motors down. I later upgraded to a wider holding mechanism.
+<p class="margin"></p>
+<img src="./wider_holding.jpg" alt="Holding mechanism prototypes" width="400" height="400">
+<p class="margin"></p>
+
 <h4>Electronics and Code</h4>
-I switched from an ESP32 to a Xiao board, which gave me good soldering practice. I controlled two servos: one for holding and one for folding.
+I switched from an ESP32 to a Xiao board, since my ESP32 somehow broke in between. This gave me good soldering practice. I controlled two servos: one for holding and one for folding. This is the code that I used:
 
 <p class="margin"></p>
 
@@ -153,19 +166,23 @@ Cardboard wasn’t strong enough, and since the motors were just secured with do
 
 <h4>Motor Mounts and L-Joints</h4>
 I took measurements of the motor and designed a L-joint to hold it down. I drilled on the plywood to fit screws through it to mount the motors securely. Experimenting with different measurements took some time.
-<p class="margin"></p>
-<img src="./Screws.jpg" alt="Sanding plywood edges" width="400" height="400">
-<p class="margin"></p>
 
 <p class="margin"></p>
 <img src="./L-joint.jpg" alt="Sanding plywood edges" width="400" height="400">
 <p class="margin"></p>
 
-After sanding the plywood, I attached the boxes together and taped the hinge onto the surface.
 
 <p class="margin"></p>
-<img src="./sanding_edges.jpg" alt="Sanding plywood edges" width="400" height="400">
+<img src="./Screws.jpg" alt="Sanding plywood edges" width="400" height="400">
 <p class="margin"></p>
+
+<p class="margin"></p>
+<img src="./mountedL-joint.jpg" alt="Sanding plywood edges" width="400" height="400">
+<p class="margin"></p>
+
+
+After sanding the plywood, I attached the boxes together and taped the hinge onto the surface.
+
 
 <p class="margin"></p>
 <img src="./assembled_boxes.jpg" alt="Assembled plywood boxes" width="400" height="400">
