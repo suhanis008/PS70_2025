@@ -24,10 +24,55 @@
 <p class="margin">   </p>
 
 <h3>Week 6: Electronic Inputs</h3>
+<h4>Assignment 1: Capacitive Sensor</h4>
 
-<h4>Assignment 1: Capactive Sensor<h4>
+<p class="margin"></p>
+
+During class, our group was assigned rotation angle as the quantity we had to measure using a capacitive sensor. We decided to use two plates acting as a capacitor: one plate fixed in place, and another plate rotating along the edge of a circular platform. The idea was that as the angle changed, the overlap between the plates would change, which would change the capacitance.
+
+<p class="margin"></p>
+
+To build the setup, we taped one plate to a small upright piece of wood and used clay to position it in front of a motor. Then we laser-cut a small circular cam with a hole in the center that fit onto the motor’s axle. We attached the second plate to the edge of this circle using clay so that when the motor rotated, the plate would sweep around in an arc.
+
+<p class="margin"></p>
+
+<img src="./capacitive_sensor_setup.jpeg" alt="capacitive sensor setup" width="400" height="400">
+
+<p class="margin"></p>
+
+<p class="margin"></p>
+<video width="360" height="640" autoplay muted>
+  <source src="./capacitve_sensor_vid.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<p class="margin"></p>
+
+We hooked up alligator clips to each plate and connected them to the appropriate wires and pins on the ESP32. The code for the motor was very simple. We just needed the motor to turn continuously.
+
+<p class="margin"></p>
+
+<p class="margin"></p>
+
+<img src="./schematic.jpg" alt="capacitive sensor setup" width="400" height="400">
+
+<p class="margin"></p>
+
+After everything was running, we measured capacitance at different rotation angles and plotted the results. The x-axis is the angle (from 0 degrees to 315 degrees) and the y-axis is the measured capacitance. The plot did not come out as clean as we expected. In theory, the capacitance should be lowest around 180 degrees and then increase steadily as the angle moves toward 360/0 degrees, reaching around 90000 (in the units we were using). Instead, our data went up and down in a less predictable way.
+
+<p class="margin"></p>
+
+This is probably due to systematic error. We ended up hand-holding the rotating plate at each angle because we could not find tape at the time, so our positioning was not very consistent. It is likely that this human error is why the measured capacitance did not match the ideal trend we expected for the capacitive sensor.
+
+
 
 <h4>Assignment 2: [Use + Calibrate Another Sensor]</h4>
+
+
+
+<h4>Assignment 3: Create a file for the CNC machine</h4>
+<p class = "margin"></p>
+<a download href='./CNC.f3d'>Download my Fusion File </a> 
+<p class = "margin"></p>
 
 </div>
 </xmp>
