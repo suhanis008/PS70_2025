@@ -40,9 +40,10 @@ From MVP week, I realized I needed a stronger hinge, better torque, and a struct
 I redesigned the hinge to increase wall thickness, improve tolerances, and prevent cracking.
 
 <p class="margin"></p>
-<img src="./final_hinge.jpg" alt="Final hinge design" width="400" height="400">
-<p class="margin"></p>
-
+<video width="640" height="360" autoplay muted>
+  <source src="final_hinge.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 <p class="margin"></p>
 
 <h4>Stronger Servo and Screw Attachment</h4>
@@ -71,6 +72,10 @@ One issue in the MVP was that I needed to tape the paper onto the hinge for ever
 <img src="./between_hinge.jpg" alt="Holding mechanism prototypes" width="400" height="400">
 <p class="margin"></p>
 
+I later upgraded to a wider holding mechanism.
+<p class="margin"></p>
+<img src="./wider_holding.jpg" alt="Holding mechanism prototypes" width="400" height="400">
+<p class="margin"></p>
 
 I also attached a thread between the folding servo arm and hinge that could bring the hinge down after every fold.
 
@@ -93,10 +98,7 @@ Your browser does not support the video tag.
 </video>
 <p class="margin"></p>
 
-However, I had to hold the motors down. I later upgraded to a wider holding mechanism.
-<p class="margin"></p>
-<img src="./wider_holding.jpg" alt="Holding mechanism prototypes" width="400" height="400">
-<p class="margin"></p>
+However, I had to hold the motors down. 
 
 <h4>Electronics and Code</h4>
 I switched from an ESP32 to a Xiao board, since my ESP32 somehow broke in between. This gave me good soldering practice. I controlled two servos: one for holding and one for folding. This is the code that I used:
@@ -154,7 +156,7 @@ void loop() {
 <p class="margin"></p>
 
 <h4>Moving from Cardboard to Plywood</h4>
-Cardboard wasn’t strong enough, and since the motors were just secured with double sided tape they kepy moving a lot. I decided to shift to finger-joint plywood boxes. I prototyped measurements using cardboard and then laser-cut 6mm plywood using MakerCase. The 0.18mm kerf made the finger joints tight enough to hammer-fit without glue.
+Cardboard wasn’t strong enough, and since the motors were just secured with double sided tape they kepy moving a lot. I decided to shift to finger-joint plywood boxes. I prototyped measurements using cardboard and then laser-cut 6mm plywood. The 0.18mm kerf made the finger joints tight enough to hammer-fit without wood glue.
 
 <p class="margin"></p>
 <img src="./cardboard_prototype.jpg" alt="Cardboard prototype" width="400" height="400">
