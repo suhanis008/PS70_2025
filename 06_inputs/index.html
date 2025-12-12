@@ -61,7 +61,7 @@ After everything was running, we measured capacitance at different rotation angl
 
 <p class="margin"></p>
 
-<img src="./graph1.jpg" alt="capacitive sensor setup" width="400" height="400">
+<img src="./graph1.jpg" alt="capacitive sensor setup" width="640" height="360">
 
 <p class="margin"></p>
 
@@ -69,10 +69,69 @@ This is probably due to systematic error. We ended up hand-holding the rotating 
 
 <p class="margin"></p>
 
-<h4>Assignment 2: [Use + Calibrate Another Sensor]</h4>
+<h4>Assignment 2: Using a Photoresistor</h4>
+<p class="margin"></p>
+
+I used a photoresistor to control the LED light and this is the code for it. It turns the LED on if there is low light and turns it off if it is light outside.
+
+const int LED_PIN = D7;      
+const int LDR_PIN = D0;     
+
+int sensorValue = 0;
+const int threshold = 1800; 
+
+void setup() {
+  pinMode(LED_PIN, OUTPUT);
+  Serial.begin(115200);
+}
+
+void loop() {
+  sensorValue = analogRead(LDR_PIN);
+  Serial.println(sensorValue);
+
+  if (sensorValue < threshold) {
+    digitalWrite(LED_PIN, HIGH);  
+  } else {
+    digitalWrite(LED_PIN, LOW);   
+  }
+}
+
+<p class = "margin"></p>
+
+This is a video of the sensor working:
+<p class="margin"></p>
+<video width="640" height="360" autoplay muted>
+  <source src="photoresistor_vid.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<p class="margin"></p>
+This is the picture of the circuit diagram.
+
+<p class="margin"></p>
+
+<img src="./photo_schematic.jpeg" alt="capacitive sensor setup" width="640" height="360">
+
+
+<p class = "margin"></p>
+
+<p class="margin"></p>
+
+<img src="./photo_circuit.jpeg" alt="capacitive sensor setup" width="640" height="360">
+
+
+<p class = "margin"></p>
 
 
 
+
+I used my phone at different flashlight settings (0,1,2,3,4) and looked at the serial plotter to get an average value. I tried to keep the phone at a constant distance from the sensor to get reliable values. Then I plotted them out in the graph below! We can see from the best fit line that the realtion is approximately linear.
+
+<p class="margin"></p>
+
+<img src="./photo_graph.jpg" alt="capacitive sensor setup" width="640" height="360">
+
+
+<p class = "margin"></p>
 <h4>Assignment 3: Create a file for the CNC machine</h4>
 <p class = "margin"></p>
 <a download href='./CNC.dxf'>Download my DXF File </a> 
