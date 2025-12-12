@@ -69,16 +69,37 @@ This is probably due to systematic error. We ended up hand-holding the rotating 
 
 <p class="margin"></p>
 
-<h4>Assignment 2: Using a Photoresistor</h4>
+<h4>Assignment 2: Photoresistor-Based Light Sensor</h4>
+
 <p class="margin"></p>
 
-I used a photoresistor to control the LED light and this is the code for it. It turns the LED on if there is low light and turns it off if it is light outside.
+<p>
+For this assignment, I used a photoresistor (light-dependent resistor, LDR) as an input sensor to measure ambient light levels. 
+The photoresistor was configured in a voltage divider circuit and connected to the microcontroller’s analog input. 
+Based on the measured light level, an LED was used as an output device that automatically turns on in low-light conditions and turns off when the environment is bright.
+</p>
 
-const int LED_PIN = D7;      
-const int LDR_PIN = D0;     
+<p>
+The program continuously reads the analog value from the photoresistor and compares it to a predefined threshold. 
+When the measured value drops below the threshold, indicating low light, the LED is turned on. 
+When the value rises above the threshold, the LED is turned off.
+</p>
+
+<p class="margin"></p>
+
+<h5>Code Implementation</h5>
+
+<p>
+The following code was used to read the photoresistor and control the LED. 
+Sensor data is printed to the Serial Monitor for calibration and debugging purposes.
+</p>
+
+<pre><code>
+const int LED_PIN = D7;      // LED output pin
+const int LDR_PIN = D0;      // Photoresistor analog input
 
 int sensorValue = 0;
-const int threshold = 1800; 
+const int threshold = 1800; // Light threshold
 
 void setup() {
   pinMode(LED_PIN, OUTPUT);
@@ -90,48 +111,74 @@ void loop() {
   Serial.println(sensorValue);
 
   if (sensorValue < threshold) {
-    digitalWrite(LED_PIN, HIGH);  
+    digitalWrite(LED_PIN, HIGH);  // Turn LED on in low light
   } else {
-    digitalWrite(LED_PIN, LOW);   
+    digitalWrite(LED_PIN, LOW);   // Turn LED off in bright light
   }
 }
+</code></pre>
 
-<p class = "margin"></p>
-
-This is a video of the sensor working:
 <p class="margin"></p>
-<video width="640" height="360" autoplay muted>
+
+<h5>Demonstration</h5>
+
+<p>
+The video below shows the photoresistor responding to changes in light levels. 
+As the ambient light decreases, the LED turns on automatically.
+</p>
+
+<p class="margin"></p>
+
+<video width="640" height="360" autoplay muted loop>
   <source src="photoresistor_vid.mp4" type="video/mp4">
-Your browser does not support the video tag.
+  Your browser does not support the video tag.
 </video>
-<p class="margin"></p>
-This is the picture of the circuit diagram.
 
 <p class="margin"></p>
 
-<img src="./photo_schematic.jpeg" alt="capacitive sensor setup" width="640" height="360">
+<h5>Sensor Schematic</h5>
 
-
-<p class = "margin"></p>
-
-<p class="margin"></p>
-
-<img src="./photo_circuit.jpeg" alt="capacitive sensor setup" width="640" height="360">
-
-
-<p class = "margin"></p>
-
-
-
-
-I used my phone at different flashlight settings (0,1,2,3,4) and looked at the serial plotter to get an average value. I tried to keep the phone at a constant distance from the sensor to get reliable values. Then I plotted them out in the graph below! We can see from the best fit line that the realtion is approximately linear.
+<p>
+The schematic below shows the photoresistor wired in a voltage divider configuration with a fixed resistor.
+The midpoint of the divider is connected to the analog input of the microcontroller.
+</p>
 
 <p class="margin"></p>
 
-<img src="./photo_graph.jpg" alt="capacitive sensor setup" width="640" height="360">
+<img src="./photo_schematic.jpeg" alt="Photoresistor schematic" width="640" height="360">
 
+<p class="margin"></p>
 
-<p class = "margin"></p>
+<h5>Physical Circuit</h5>
+
+<p>
+The image below shows the physical implementation of the circuit on a breadboard, including the photoresistor, resistor, LED, and microcontroller connections.
+</p>
+
+<p class="margin"></p>
+
+<img src="./photo_circuit.jpeg" alt="Photoresistor circuit on breadboard" width="640" height="360">
+
+<p class="margin"></p>
+
+<h5>Sensor Calibration and Data Analysis</h5>
+
+<p>
+To calibrate the photoresistor, I used my phone’s flashlight at five different brightness settings (0–4) while keeping the phone at a constant distance from the sensor.
+For each brightness level, I observed the analog readings in the Serial Plotter and recorded an average value.
+</p>
+
+<p>
+These values were then plotted on a graph to analyze the relationship between light intensity and the sensor output.
+As shown in the graph below, the relationship between the photoresistor’s resistance and light intensity is approximately linear.
+</p>
+
+<p class="margin"></p>
+
+<img src="./photo_graph.jpg" alt="Photoresistor calibration graph" width="640" height="360">
+
+<p class="margin"></p>
+
 <h4>Assignment 3: Create a file for the CNC machine</h4>
 <p class = "margin"></p>
 <a download href='./CNC.dxf'>Download my DXF File </a> 
