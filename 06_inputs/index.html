@@ -73,26 +73,23 @@ This is probably due to systematic error. We ended up hand-holding the rotating 
 
 <p class="margin"></p>
 
-<p>
+
 For this assignment, I used a photoresistor (light-dependent resistor, LDR) as an input sensor to measure ambient light levels. 
 The photoresistor was configured in a voltage divider circuit and connected to the microcontroller’s analog input. 
 Based on the measured light level, an LED was used as an output device that automatically turns on in low-light conditions and turns off when the environment is bright.
-</p>
 
-<p>
 The program continuously reads the analog value from the photoresistor and compares it to a predefined threshold. 
 When the measured value drops below the threshold, indicating low light, the LED is turned on. 
 When the value rises above the threshold, the LED is turned off.
-</p>
+
 
 <p class="margin"></p>
 
 <h5>Code Implementation</h5>
 
-<p>
+
 The following code was used to read the photoresistor and control the LED. 
 Sensor data is printed to the Serial Monitor for calibration and debugging purposes.
-</p>
 
 <pre><code>
 const int LED_PIN = D7;      // LED output pin
@@ -122,10 +119,10 @@ void loop() {
 
 <h5>Demonstration</h5>
 
-<p>
+
 The video below shows the photoresistor responding to changes in light levels. 
 As the ambient light decreases, the LED turns on automatically.
-</p>
+
 
 <p class="margin"></p>
 
@@ -138,10 +135,10 @@ As the ambient light decreases, the LED turns on automatically.
 
 <h5>Sensor Schematic</h5>
 
-<p>
+
 The schematic below shows the photoresistor wired in a voltage divider configuration with a fixed resistor.
 The midpoint of the divider is connected to the analog input of the microcontroller.
-</p>
+
 
 <p class="margin"></p>
 
@@ -151,9 +148,9 @@ The midpoint of the divider is connected to the analog input of the microcontrol
 
 <h5>Physical Circuit</h5>
 
-<p>
+
 The image below shows the physical implementation of the circuit on a breadboard, including the photoresistor, resistor, LED, and microcontroller connections.
-</p>
+
 
 <p class="margin"></p>
 
@@ -163,15 +160,11 @@ The image below shows the physical implementation of the circuit on a breadboard
 
 <h5>Sensor Calibration and Data Analysis</h5>
 
-<p>
 To calibrate the photoresistor, I used my phone’s flashlight at five different brightness settings (0–4) while keeping the phone at a constant distance from the sensor.
 For each brightness level, I observed the analog readings in the Serial Plotter and recorded an average value.
-</p>
 
-<p>
 These values were then plotted on a graph to analyze the relationship between light intensity and the sensor output.
 As shown in the graph below, the relationship between the photoresistor’s resistance and light intensity is approximately linear.
-</p>
 
 <p class="margin"></p>
 
